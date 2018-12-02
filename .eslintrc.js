@@ -38,15 +38,14 @@ module.exports = {
 
     'prefer-destructuring': 'off',
 
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+
     'react/no-find-dom-node': 'off', // I don't know
     'react/no-did-mount-set-state': 'off',
     'react/no-unused-prop-types': 'off', // Is still buggy
     'react/jsx-one-expression-per-line': 'off',
 
-    'jsx-a11y/anchor-is-valid': [
-      'error',
-      { components: ['Link'], specialLink: ['to'] },
-    ],
+    'jsx-a11y/anchor-is-valid': ['error', { components: ['Link'], specialLink: ['to'] }],
     'jsx-a11y/label-has-for': [
       2,
       {
