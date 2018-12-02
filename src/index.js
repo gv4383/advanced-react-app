@@ -1,17 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import "./myStyles.scss";
+import './myStyles.scss';
 
 class App extends React.Component {
   state = {
     CaptainKirkBio: {},
-    Foo: null // Foo is out component
+    Foo: null, // Foo is out component
   };
 
   componentDidMount() {
     this.onGetKirkBio();
-    import(/* webpackChunkName: 'Foo' */ "./Foo").then(Foo => {
+    import(/* webpackChunkName: 'Foo' */ './Foo').then(Foo => {
       this.setState({ Foo: Foo.default });
     });
   }
@@ -19,23 +19,23 @@ class App extends React.Component {
   onGetKirkBio = async () => {
     try {
       const result = await fetch(
-        "http://stapi.co/api/v1/rest/character/search",
+        'http://stapi.co/api/v1/rest/character/search',
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
+            'Content-Type': 'application/x-www-form-urlencoded',
           },
           body: {
-            title: "James T. Kirk",
-            name: "James T. Kirk"
-          }
-        }
+            title: 'James T. Kirk',
+            name: 'James T. Kirk',
+          },
+        },
       );
       const resultJSON = await result.json();
       const character = resultJSON.characters[0];
       this.setState({ CaptainKirkBio: character });
     } catch (error) {
-      console.log("error", error);
+      console.log('error', error);
     }
   };
 
@@ -58,7 +58,7 @@ class App extends React.Component {
           {Object.values(CaptainKirkBio).length === 0 ? (
             <p>Loading User Information</p>
           ) : (
-            <p style={{ wordBreak: "break-all" }}>
+            <p style={{ wordBreak: 'break-all' }}>
               {JSON.stringify(CaptainKirkBio)}
             </p>
           )}
@@ -69,4 +69,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));
